@@ -11,7 +11,7 @@
 
 function main() {
   const fs = require("fs");
-  let input = fs.readFileSync("./dev/stdin").toString().split(" ");
+  let input = fs.readFileSync("../dev/stdin").toString().split(" ");
   let full = 660 + input[0] * 88.5; // 전체요금
   let result = full + full * 0.09; // 최종 사용 요금
 

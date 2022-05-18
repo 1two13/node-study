@@ -5,7 +5,7 @@
 
 function main() {
   const fs = require("fs");
-  const input = fs.readFileSync("./dev/stdin").toString().trim().split("\n");
+  const input = fs.readFileSync("../dev/stdin").toString().trim().split("\n");
   let mileage = input[0]; // 주행거리
   let speed = input[1]; // 시속
   // 주행시간 = 주행거리 / 시속
