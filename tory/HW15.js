@@ -15,20 +15,21 @@ function entry() {
 }
 
 // bmi 계산함수
-function cal() {
-  const [weight, height] = entry();
+function cal(weight, height) {
   const bmi = (weight / Math.pow(height, 2)).toFixed(1);
+  let result;
   if (bmi < 18.5) result = "저체중";
   else if (bmi < 25.0) result = "정상체중";
   else if (bmi < 30.0) result = "과체중";
   else if (bmi < 40) result = "비만";
   else result = "고도비만";
-  return bmi;
+  return [bmi, result];
 }
 
 // 출력함수
 function main() {
-  const bmi = cal();
+  const [weight, height] = entry();
+  const [bmi, result] = cal(weight, height);
   console.log(`당신의 BMI는 ${bmi}으로 ${result}입니다.`);
 }
 main();
