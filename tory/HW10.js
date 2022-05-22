@@ -4,15 +4,16 @@
 
 function main() {
   const fs = require("fs");
-  const input = fs.readFileSync("../dev/stdin").toString().trim().split("\n");
+  process.stdout.write("두개의 정수를 입력하시오 : ");
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split(" ");
+
   const one = Number(input[0]);
   const two = Number(input[1]);
+
   console.log(
-    `두개의 정수를 입력하시오 : ${one} ${two}\n${one}+${two} = ${
-      one + two
-    }\n${one}-${two} = ${one - two}\n${one}x${two} = ${
-      one * two
-    }\n${one}/${two} = ${one / two}`
+    `${one}+${two} = ${one + two}\n${one}-${two} = ${
+      one - two
+    }\n${one}x${two} = ${one * two}\n${one}/${two} = ${one / two}`
   );
 }
 

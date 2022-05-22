@@ -3,8 +3,10 @@
 
 function main() {
   const fs = require("fs");
-  const input = fs.readFileSync("../dev/stdin").toString().trim().split("\n");
-  const name = input[0];
+  process.stdout.write("이름을 입력하시오 : ");
+  const input = fs.readFileSync("/dev/stdin").toString().trim();
+
+  const name = input;
 
   let result = "";
   for (let i = 0; i < 20 - name.length; i++) {

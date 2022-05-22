@@ -3,12 +3,14 @@
 
 function main() {
   const fs = require("fs");
-  const input = fs.readFileSync("../dev/stdin").toString().trim(); // Hong Gildong
+  process.stdout.write("#성을 입력하시오 : ");
+  const lastName = fs.readFileSync("/dev/stdin").toString().trim(); // Hong
+  process.stdout.write("#이름을 입력하시오 : ");
+  const firstName = fs.readFileSync("/dev/stdin").toString().trim(); // Gildong
 
-  const split = input.split(" ");
   let result = "";
-  const lastNameL = split[0].length; // 4
-  const firstNameL = split[1].length; // 7
+  const lastNameL = lastName.length; // 4
+  const firstNameL = firstName.length; // 7
 
   for (let i = 0; i <= lastNameL + firstNameL; i++) {
     if (i === lastNameL - 1) result = result + lastNameL;
@@ -16,7 +18,7 @@ function main() {
     else result = result + " ";
   }
 
-  console.log(`${input}\n${result}`);
+  console.log(`${lastName} ${firstName}\n${result}`);
 }
 
 main();

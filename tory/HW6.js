@@ -4,9 +4,12 @@
 
 function main() {
   const fs = require("fs");
-  let input = fs.readFileSync("../dev/stdin").toString().split(" "); // f
-  let c = ((5 / 9) * (input[1] - 32)).toFixed(1);
-  console.log(`화씨 온도를 입력하세요 : ${input}\n섭씨 온도는 ${c}도 입니다.`);
+  process.stdout.write("화씨 온도를 입력하세요 : ");
+  const f = fs.readFileSync("/dev/stdin").toString();
+
+  let c = ((5 / 9) * (f - 32)).toFixed(1);
+
+  console.log(`섭씨 온도는 ${c}도 입니다.`);
 }
 
 main();

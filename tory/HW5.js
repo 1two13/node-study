@@ -11,13 +11,13 @@
 
 function main() {
   const fs = require("fs");
-  let input = fs.readFileSync("../dev/stdin").toString().split(" ");
-  let full = 660 + input[0] * 88.5; // 전체요금
+  process.stdout.write("전기 사용량을 입력하세요(kw) : ");
+  const amount = fs.readFileSync("/dev/stdin").toString();
+
+  let full = 660 + amount * 88.5; // 전체요금
   let result = full + full * 0.09; // 최종 사용 요금
 
-  console.log(
-    `전기 사용량을 입력하세요(kw) : ${input}\n전기 사용요금은 ${result}0000 원 입니다.`
-  );
+  console.log(`전기 사용요금은 ${result}0000 원 입니다.`);
 }
 
 main();

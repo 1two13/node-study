@@ -5,19 +5,18 @@
 
 function main() {
   const fs = require("fs");
-  const input = fs.readFileSync("../dev/stdin").toString().trim().split("\n");
-  let mileage = input[0]; // 주행거리
-  let speed = input[1]; // 시속
+  process.stdout.write("거리를 입력하시오(km단위) : ");
+  const mileage = fs.readFileSync("/dev/stdin").toString().trim(); // 주행거리
+  process.stdout.write("시속을 입력하시오(km/h단위) : ");
+  const speed = fs.readFileSync("/dev/stdin").toString().trim(); // 시속
   // 주행시간 = 주행거리 / 시속
   let time = mileage / speed;
   let hour = Math.floor(time);
   let min = (mileage / speed - hour) * 60;
   let intMin = parseInt((mileage / speed - hour) * 60);
   let sec = ((min - intMin) * 60).toFixed(3);
-  console.log(time);
-  console.log(
-    `거리를 입력하시오(km단위) : ${mileage}\n시속을 입력하시오(km/h단위) : ${speed}\n${hour}시간 ${intMin}분 ${sec} 초 소요됨`
-  );
+
+  console.log(`${mileage} km = >${hour}시간 ${intMin}분 ${sec} 초 소요됨`);
 }
 
 main();
