@@ -31,13 +31,14 @@ function inputCal(randomNum) {
       max = input;
     }
   }
+
   return cnt;
 }
 
 // 출력함수
 function main() {
   let randomNum = random();
-  console.log(randomNum);
+  // console.log(randomNum);
   let cnt = inputCal(randomNum);
   console.log(`우와~ 맞았당~~~ 추카추카~~ ${cnt} 번째 만에 맞추셨습니다.`);
 }
