@@ -1,33 +1,39 @@
-// 1 ~ 100 출력
-// 3의 배수는 *
-// 5의 배수는 #
-// 3과 5의 공배수(15의 배수)는 숫자
-// 출력 시 한 줄에 10개
+// 입력값 => 5개의 정수(무조건 양수 값)
+// 출력값 => 입력된 값의 총 합
+// 0 이하의 수를 입력 받을 경우 다시 입력 받도록 설정하기
+
+const fs = require("fs");
+let input;
+let n = 1;
+let result = 0;
 
 function main() {
-  let result = "";
-  // n은 1 ~ 100
-  for (let n = 1; n <= 100; n++) {
-    // 아래 3가지 경우의 수를 제외한 수는 모두 그냥 숫자로 표시하기
-    let char = n.toString();
-    // n이 3의 배수이면서 5의 배수인 경우에는 그냥 숫자로 표시하기
-    if (n % 15 === 0) char = char;
-    // 만약 n이 3의 배수인 경우에는 * 로 표시하기
-    else if (n % 3 === 0) char = "*";
-    // 만약 n이 5의 배수인 경우에는 # 으로 표시하기
-    else if (n % 5 === 0) char = "#";
+  process.stdout.write("0 보다 큰수를 입력하시오(1 번째) : ");
+  input = Number(fs.readFileSync("/dev/stdin").toString().trim());
+  result = result + input;
 
-    // n.toString().length === 1 이면 n 앞 뒤로 띄어쓰기를 주기
-    if (char.length === 1) result += " " + char + " ";
-    // n.toString().length === 2 면 n 뒤에만 띄어쓰기를 주기
-    else if (char.length === 2) result += char + " ";
-
-    // 한 줄에 10개의 값만 보여주기
-    if (n % 10 === 0) {
-      result += "\n";
+  // 단일 for문 사용해서 프로그래밍 하기
+  // cnt가 5가 될때까지 반복문 실행
+  for (let cnt = 1; cnt < 5; ) {
+    // input이 0보다 크다면
+    if (input > 0) {
+      // 번째 횟수와 cnt 증가시키기
+      n++; // 2
+      cnt++; // 2
+      process.stdout.write(`0 보다 큰수를 입력하시오(${n} 번째) : `);
+      input = Number(fs.readFileSync("/dev/stdin").toString().trim());
+      if (input > 0) result = result + input;
+    }
+    // input이 0 이하라면
+    else {
+      // 다시 입력 받기
+      process.stdout.write(`0 보다 큰수를 입력하시오(${n} 번째) : `);
+      input = Number(fs.readFileSync("/dev/stdin").toString().trim());
+      if (input > 0) result = result + input;
     }
   }
-  console.log(result);
+  // 입력된 input 의 총 합 구하기
+  console.log(`입력된 값의 총 합 : ${result}`);
 }
 
 main();
