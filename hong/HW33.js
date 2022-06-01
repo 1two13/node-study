@@ -9,10 +9,11 @@ function setFan(newFan) {
   fan = newFan;
 }
 
+// 메뉴번호 또는 FAN 번호를 입력 받는 함수
 function input(message, errorMessage, validateFunction) {
   process.stdout.write(message);
-  let result = Number(fs.readFileSync("/dev/stdin").toString().trim());
-
+  let result = Number(fs.readFileSync("/dev/stdin").toString().trim()); // 1 ~ 4 숫자
+  // 1 ~ 4 이외의 메뉴번호(number)가 입력되거나 문자가 입력되면 재입력 요구
   while (!validateFunction(result)) {
     console.warn(errorMessage);
     process.stdout.write(message);
@@ -22,10 +23,12 @@ function input(message, errorMessage, validateFunction) {
   return result;
 }
 
+// input 함수를 사용하기 위한 준비자료같은 함수
 function menu() {
   const message =
     "1. 환풍구 열기 / 2. 환풍구 닫기 / 3. 환풍구 전체 전환 / 4. 종료 : ";
   const errorMessage = "1~4의 숫자를 입력해주세요.";
+  // T/F 값 리턴
   const validateFunction = (number) => {
     return !isNaN(number) && 1 <= number && number <= 4;
   };
@@ -47,7 +50,7 @@ function openFan() {
   const fanNum = input(message, errorMessage, validateFunction);
 
   const fan = getFan();
-  const target = 1 << (fanNum - 1);
+  const target = 1 << (fanNum - 1); // 비트연산자
   const newFan = fan | target;
   setFan(newFan);
 }
@@ -66,7 +69,8 @@ function offFan() {
   const fanNum = input(message, errorMessage, validateFunction);
 
   const fan = getFan();
-  const target = ~(1 << (fanNum - 1));
+  const target = ~(1 << (fanNum - 1)); // 각 자리의 비트 뒤집기
+  // fan과 newFan의 각 자리를 대응하는 비트가 모두 1일 경우에만 1 반환
   const newFan = fan & target;
   setFan(newFan);
 }
